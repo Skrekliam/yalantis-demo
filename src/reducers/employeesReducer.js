@@ -1,7 +1,12 @@
 const employeeReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_EMPLOYEES":
-      return state.concat(...action.payload);
+          for (const el of action.payload) {
+            let ind = el['lastName'][0];
+            state[ind].push(el);
+          // console.log(action.payload[0]['lastName'][0])
+          }
+          return state;
     default:
       return state;
   }

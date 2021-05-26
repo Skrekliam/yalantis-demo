@@ -7,8 +7,39 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import allReducers from "./reducers";
 
+const initialState = {
+  list: {
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+    E: [],
+    F: [],
+    G: [],
+    H: [],
+    I: [],
+    J: [],
+    K: [],
+    L: [],
+    M: [],
+    N: [],
+    O: [],
+    P: [],
+    R: [],
+    S: [],
+    T: [],
+    U: [],
+    V: [],
+    W: [],
+    X: [],
+    Y: [],
+    Z: [],
+  },
+};
+
 export const store = createStore(
   allReducers,
+  initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
