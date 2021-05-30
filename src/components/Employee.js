@@ -1,7 +1,11 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import EmployeeItem from "./EmployeeItem";
 
 function Employees() {
+  
+
   return (
     <>
       <Row>
@@ -9,9 +13,11 @@ function Employees() {
       </Row>
       <Row>
         <Col xl={8} md={8}>
-          </Col>
+          {<EmployeeItem />}
+        </Col>
         <Col xl={4} md={4}>
           Employees birthday
+          {/* <EmployeeItem /> */}
         </Col>
       </Row>
     </>

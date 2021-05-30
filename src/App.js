@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployees } from "./actions";
 
-function App() {
+ function App() {
   const dispatch = useDispatch()
-  useEffect(()=>{
-    axios.get('https://yalantis-react-school-api.yalantis.com/api/task0/users').then(res=> dispatch(addEmployees(res.data)))
+  useEffect(async()=>{
+   await axios.get('https://yalantis-react-school-api.yalantis.com/api/task0/users').then(res=> dispatch(addEmployees(res.data)))
   },[])
 
 
