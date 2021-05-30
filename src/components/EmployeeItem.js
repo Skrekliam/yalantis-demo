@@ -22,7 +22,7 @@ function EmployeeItem() {
 
   let eList = [];
   // console.log(list[keys[0]]);
-  console.log(vals);
+  // console.log(vals);
   let cnt = 0;
   //   console.log(list.A)
 
@@ -32,23 +32,36 @@ function EmployeeItem() {
       {/* {key.map(el=>  */}
 
       <div>
-        <div>
+        <Row className="cards">
           {vals.map((el1, ind) => {
-            return (
+            return (<div className="card-wrapper">
               <Card key={cnt++} border="info" style={{ width: "18rem" }}>
                 <Card.Header>{keys[ind]}</Card.Header>
                 <Card.Body>
                   {el1.map((el2) => {
-                    console.log(el2);
+                    // console.log(el1.length==='0' ? 'yas' : 'no');
+                    if(el2['lastName']==='---'){
+                      return (
+                        <div key={el2["id"]}>
+                        {" "}
+                        <Card.Title>
+                          {el2['lastName']}
+                        </Card.Title>
+                        </div>
+                      )
+                    }
                     return (
                       <div key={el2["id"]}>
                         {" "}
                         <Card.Title>
                           {el2["lastName"]} {el2["firstName"]}
                         </Card.Title>
+                        {
+                          
+                        }
                         <Card.Text>
                          
-                          <input type="radio" name={el2['id']} value="not active" id={el2['id']} /> Not active <br />
+                          <input type="radio" name={el2['id']} value="not active" id={el2['id']} checked/> Not active <br />
                           <input type="radio" name={el2['id']} value="active" id={el2['id']} /> Active <br />
                         </Card.Text>
                         <hr />
@@ -57,9 +70,9 @@ function EmployeeItem() {
                   })}
                 </Card.Body>
               </Card>
-            );
+            </div>);
           })}
-        </div>
+        </Row>
         )
       </div>
 
