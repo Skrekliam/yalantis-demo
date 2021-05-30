@@ -3,32 +3,44 @@ import { useSelector } from "react-redux";
 import { store } from "..";
 
 const retMonth = (id) => {
-    let mths;
+  let mths;
   switch (id) {
     case 1:
-      mths =  "January";break;
+      mths = "January";
+      break;
     case 2:
-      mths =  "February";break;
+      mths = "February";
+      break;
     case 3:
-      mths =  "April";break;
+      mths = "April";
+      break;
     case 4:
-      mths =  "March";break;
+      mths = "March";
+      break;
     case 5:
-      mths =  "May";break;
+      mths = "May";
+      break;
     case 6:
-      mths =  "June";break;
+      mths = "June";
+      break;
     case 7:
-      mths =  "July";break;
+      mths = "July";
+      break;
     case 8:
-      mths =  "August";break;
+      mths = "August";
+      break;
     case 9:
-      mths =  "September";break;
+      mths = "September";
+      break;
     case 10:
-      mths =  "October";break;
+      mths = "October";
+      break;
     case 11:
-      mths =  "November";break;
+      mths = "November";
+      break;
     case 12:
-      mths =  "December";break;
+      mths = "December";
+      break;
   }
   return mths;
 };
@@ -64,47 +76,58 @@ function Birthday() {
       )
     );
     setelements(
-      elem.sort(( a, b ) =>{
-        if ( a["dob"].split("-")[1] < b["dob"].split("-")[1] ){
+      elem.sort((a, b) => {
+        if (a["dob"].split("-")[1] < b["dob"].split("-")[1]) {
           return -1;
         }
-        if ( a["dob"].split("-")[1] > b["dob"].split("-")[1] ){
+        if (a["dob"].split("-")[1] > b["dob"].split("-")[1]) {
           return 1;
         }
         return 0;
-      }
-      ));
-    console.log(elem);
+      })
+    );
+    // console.log(elem);
   });
-  console.log(elements);
+  // console.log(elements);
 
   elements.map((el) => {
-    console.log(mnths[el["dob"].split("-")[1]]);
+    // console.log(mnths[el["dob"].split("-")[1]]);
     mnths[Number(el["dob"].split("-")[1])].push(el);
   });
-//   console.log(mnths);
-//   console.log(Object.values(mnths));
+  //   console.log(mnths);
+  //   console.log(Object.values(mnths));
   //here
   let prevM = 0;
   return (
     <div>
       <h1>Employees birthday</h1>
-      {
-      elements.filter(el => el['dob'].split("-")[1]>= curMonth+1).map((el) => {
-          
-      let dob = el["dob"].split("-");
-      let year = dob[0];
-      let month = dob[1];
-      let day = dob[2].split("T")[0];
-      let val = '1';
-      if(prevM != month){ val = retMonth(Number(month)); prevM = month; console.log('not') } else {  console.log('uas');val = ''}
-      return (<>
-          <h4>{val}</h4>
-        <p>
-          {el["lastName"]} {el["firstName"]} - {day} {month}, {year} year
-        </p></>
-      );
-    })}
+      <span>{elements.length < 1 ? "Employees List is empty" : ""}</span>
+      {elements
+        .filter((el) => el["dob"].split("-")[1] >= curMonth + 1)
+        .map((el) => {
+          let dob = el["dob"].split("-");
+          let year = dob[0];
+          let month = dob[1];
+          let day = dob[2].split("T")[0];
+          let val = "1";
+          if (prevM != month) {
+            val = retMonth(Number(month));
+            prevM = month;
+            console.log("not");
+          } else {
+            console.log("uas");
+            val = "";
+          }
+          return (
+            <>
+             
+              <h4>{val}</h4>
+              <p>
+                {el["lastName"]} {el["firstName"]} - {day} {month}, {year} year
+              </p>
+            </>
+          );
+        })}
     </div>
   );
 }

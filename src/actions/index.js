@@ -12,16 +12,15 @@ export const addSelect = (val) => {
   };
 };
 export const deleteSelected = (val) => {
-    return {
-      type: "DELETE_SELECTED",
-      payload: val,
-    };
+  return {
+    type: "DELETE_SELECTED",
+    payload: val,
   };
-  
+};
 
-  export const setSelect = (val) => {
-    return {
-      type: "SET_SELECT",
-      payload: val,
-    };
+export const setSelect = (val) => {
+  return {
+    type: "SET_SELECT",
+    payload: val,
   };
+};

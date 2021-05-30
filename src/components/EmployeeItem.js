@@ -13,8 +13,6 @@ function EmployeeItem() {
   const [keys, setkeys] = useState([]);
   const [vals, setvals] = useState([]);
   const [selected, setselected] = useState([]);
-  
-  
 
   const handleList = () => {
     const newState = store.getState().list;
@@ -91,7 +89,6 @@ function EmployeeItem() {
             </div>
           );
         })}
-        )
       </div>
 
       {/* )} */}
