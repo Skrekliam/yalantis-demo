@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ButtonGroup, Card, Col, Form, InputGroup, Row, ToggleButton } from "react-bootstrap";
+import "./EmployeeItem.css"
 import { useSelector } from "react-redux";
 import { store } from "../index.js";
 
@@ -31,48 +31,58 @@ function EmployeeItem() {
     <>
       {/* {key.map(el=>  */}
 
-      <div>
-        <Row className="cards">
+      <div className="container">
           {vals.map((el1, ind) => {
-            return (<div className="card-wrapper">
-              <Card key={cnt++} border="info" style={{ width: "18rem" }}>
-                <Card.Header>{keys[ind]}</Card.Header>
-                <Card.Body>
-                  {el1.map((el2) => {
-                    // console.log(el1.length==='0' ? 'yas' : 'no');
-                    if(el2['lastName']==='---'){
+            return (
+                
+              <div className="card" key={cnt++} border="info" style={{ width: "18rem" }}>
+                <div className="card-header">{keys[ind]}</div>
+                <div className="card-body" style={{
+      maxHeight: '225px',
+      overflowY: 'auto'
+     }}>
+                    {el1.map((el2) => {
+                      // console.log(el1.length==='0' ? 'yas' : 'no');
+                      if (el2["lastName"] === "---") {
+                        return (
+                          <div key={el2["id"]}>
+                            {" "}
+                            <div className="card-title">{el2["lastName"]}</div>
+                          </div>
+                        );
+                      }
                       return (
                         <div key={el2["id"]}>
-                        {" "}
-                        <Card.Title>
-                          {el2['lastName']}
-                        </Card.Title>
+                          {" "}
+                          <div className="card-title">
+                            {el2["lastName"]} {el2["firstName"]}
+                          </div>
+                          {}
+                          <div className="card-text">
+                            <input
+                              type="radio"
+                              name={el2["id"]}
+                              value="not active"
+                              id={el2["id"]}
+                              checked
+                            />{" "}
+                            Not active <br />
+                            <input
+                              type="radio"
+                              name={el2["id"]}
+                              value="active"
+                              id={el2["id"]}
+                            />{" "}
+                            Active <br />
+                          </div>
+                          <hr />
                         </div>
-                      )
-                    }
-                    return (
-                      <div key={el2["id"]}>
-                        {" "}
-                        <Card.Title>
-                          {el2["lastName"]} {el2["firstName"]}
-                        </Card.Title>
-                        {
-                          
-                        }
-                        <Card.Text>
-                         
-                          <input type="radio" name={el2['id']} value="not active" id={el2['id']} checked/> Not active <br />
-                          <input type="radio" name={el2['id']} value="active" id={el2['id']} /> Active <br />
-                        </Card.Text>
-                        <hr />
-                      </div>
-                    );
-                  })}
-                </Card.Body>
-              </Card>
-            </div>);
+                      );
+                    })}
+                </div>
+              </div>
+            );
           })}
-        </Row>
         )
       </div>
 

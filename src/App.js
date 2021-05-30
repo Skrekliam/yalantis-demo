@@ -1,9 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-import { Container } from 'react-bootstrap';
 import Employees from './components/Employee';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployees } from "./actions";
@@ -17,9 +15,9 @@ import { addEmployees } from "./actions";
 
 
   return (
-    <Container fluid className="App">
+    <div className="App">
       <Employees />
-    </Container>
+    </div>
   );
 }
 

@@ -1,0 +1,12 @@
+.container {
+    width: 100%;
+  min-width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.employee-block {
+    width: 80%;
+}
+.bday-block {
+    width: 20%;
+}
