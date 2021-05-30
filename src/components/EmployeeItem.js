@@ -6,7 +6,7 @@ import Radios from "./Radios";
 import { setSelect } from "../actions";
 
 function EmployeeItem() {
-  console.log("key");
+  // console.log("key");
   const startlist = useSelector((state) => state.list);
   const dispatch = useDispatch();
   const [list, setlist] = useState(startlist);
@@ -23,11 +23,11 @@ function EmployeeItem() {
     setkeys(Object.keys(list));
     setvals(Object.values(list));
     setselected(newSelected);
-    console.log('change');
-    console.log(newSelected);
+    // console.log('change');
+    // console.log(newSelected);
   };
   store.subscribe(handleList);
-  console.log(selected);
+  // console.log(selected);
 
   let eList = [];
   // console.log(list[keys[0]]);
