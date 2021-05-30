@@ -31,3 +31,6 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+.selected{
+    color:blue;
+}

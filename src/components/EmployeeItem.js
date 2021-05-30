@@ -11,15 +11,19 @@ function EmployeeItem() {
   const [list, setlist] = useState(startlist);
   const [keys, setkeys] = useState([]);
   const [vals, setvals] = useState([]);
+  const [selected, setselected] = useState([])
   const [radioValue, setRadioValue] = useState({});
 
   const handleList = () => {
     const newState = store.getState().list;
+    const newSelected = store.getState().selected;
     setlist(newState);
     setkeys(Object.keys(list));
     setvals(Object.values(list));
+    setselected(newSelected);
   };
   store.subscribe(handleList);
+  console.log(selected);
 
   let eList = [];
   // console.log(list[keys[0]]);
@@ -62,7 +66,7 @@ function EmployeeItem() {
                   return (
                     <div key={el2["id"]}>
                       {" "}
-                      <div className="card-title">
+                      <div className={selected.indexOf(el2["id"]) > -1 ? "card-title selected" : "card-title"}>
                         {el2["lastName"]} {el2["firstName"]}
                       </div>
                       {}
