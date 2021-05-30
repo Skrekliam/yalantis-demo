@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./EmployeeItem.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { store } from "../index.js";
 import Radios from "./Radios";
+import { setSelect } from "../actions";
 
 function EmployeeItem() {
   console.log("key");
   const startlist = useSelector((state) => state.list);
-
+  const dispatch = useDispatch();
   const [list, setlist] = useState(startlist);
   const [keys, setkeys] = useState([]);
   const [vals, setvals] = useState([]);
-  const [selected, setselected] = useState([])
-  const [radioValue, setRadioValue] = useState({});
+  const [selected, setselected] = useState([]);
+  
+  
 
   const handleList = () => {
     const newState = store.getState().list;
@@ -21,6 +23,8 @@ function EmployeeItem() {
     setkeys(Object.keys(list));
     setvals(Object.values(list));
     setselected(newSelected);
+    console.log('change');
+    console.log(newSelected);
   };
   store.subscribe(handleList);
   console.log(selected);
@@ -66,7 +70,13 @@ function EmployeeItem() {
                   return (
                     <div key={el2["id"]}>
                       {" "}
-                      <div className={selected.indexOf(el2["id"]) > -1 ? "card-title selected" : "card-title"}>
+                      <div
+                        className={
+                          selected.indexOf(el2["id"]) > -1
+                            ? "card-title selected"
+                            : "card-title"
+                        }
+                      >
                         {el2["lastName"]} {el2["firstName"]}
                       </div>
                       {}

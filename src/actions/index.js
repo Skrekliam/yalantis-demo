@@ -11,3 +11,17 @@ export const addSelect = (val) => {
     payload: val,
   };
 };
+export const deleteSelected = (val) => {
+    return {
+      type: "DELETE_SELECTED",
+      payload: val,
+    };
+  };
+  
+
+  export const setSelect = (val) => {
+    return {
+      type: "SET_SELECT",
+      payload: val,
+    };
+  };

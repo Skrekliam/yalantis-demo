@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {addSelect} from "../actions"
+import { store } from "..";
+import {addSelect, deleteSelected} from "../actions"
 
 function Radios({id}) {
-    const [checked, setchecked] = useState('not-active');
+    const selected = store.getState().selected;
+    const state = selected.indexOf(id) > -1;
+    const [checked, setchecked] = useState( state === true ? 'active' :'not-active');
     const dispatch = useDispatch();
-    
     const handleAdd = (item) => {
         if(!localStorage.getItem('active')){
             let tmpArr = [];
             tmpArr.push(item);
-            console.log(tmpArr);
+            // console.log(tmpArr);
             dispatch(addSelect(item));
             localStorage.setItem('active',JSON.stringify(tmpArr));
         } else {
@@ -23,8 +25,17 @@ function Radios({id}) {
         }
     }
 
-    const handleDelete = (id) => {
-        alert('del '+ id)
+    const handleDelete = (item) => {
+        if(!localStorage.getItem('active')){
+            alert('Please add item first');
+        } else {
+            let ls = JSON.parse(localStorage.getItem('active'));
+            console.log(ls);
+            ls = ls.filter(el => el !== item);
+            dispatch(deleteSelected(item));
+            console.log(ls);
+            localStorage.setItem('active',JSON.stringify(ls));
+        }
 
     }
     return (

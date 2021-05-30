@@ -33,4 +33,5 @@
 }
 .selected{
     color:blue;
+    font-weight: bold;
 }
